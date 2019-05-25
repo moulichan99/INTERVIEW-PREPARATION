@@ -1,0 +1,49 @@
+int gcd(int a,int b)
+{
+  
+    if (b == 0) 
+        return a; 
+    return gcd(b, a % b);  
+      
+}
+
+int lcm(int a,int b)
+{
+    return (a*b)/gcd(a, b);     
+}
+/*You are required to complete this function*/
+void addFraction(int num1, int den1, int num2,int den2)
+{
+//Your code here
+int num3=0,den3=0;
+if(den1==den2)
+{
+    den3=den1;
+    num3=num1+num2;
+}
+else
+{
+    den3 = lcm(den1,den2);
+    int mul1 = den3/den1;
+    int mul2 = den3/den2;
+    num3=num1*mul1+num2*mul2;
+    
+}
+
+// for simplification like 6/9 -------------------->2/3
+int k = gcd(num3,den3);
+num3=num3/k;
+den3=den3/k;
+
+cout<<num3<<"/"<<den3<<endl;
+    
+    
+}
+
+// you have yo know how to find gcd and lcm
+
+find gcd using euclidiean algo
+
+find lcm using formula
+lcm(a,b)=(a * b)/gcd(a,b)
+
