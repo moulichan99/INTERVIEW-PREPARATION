@@ -1,0 +1,35 @@
+#include <math.h>
+#include <iostream>
+using namespace std;
+
+long int reverse(long int n){
+    
+    long int r = 0;
+    while(n){
+        
+        r = r*10+n%10;
+        n = n/10;
+    }
+    
+    return r;
+}
+
+int main() {
+	//code
+	int t;
+
+	cin>>t;
+	
+	while(t--)
+	{
+	    long int n=0;
+	    cin>>n;
+	    long int rev = reverse(n);
+	    cout<<rev<<endl;
+	    
+	}
+	return 0;
+}
+
+
+/// long int type plays role ...................................................
