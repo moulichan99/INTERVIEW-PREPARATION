@@ -1,0 +1,44 @@
+simple solution 
+
+#include<stdio.h>
+ 
+int main(){
+	int num,j,s=0;
+	printf("Enter a number:");
+	scanf("%d",&num);
+	
+	for(j=1;j<num;++j){
+		if(num%j==0){
+			s=s+j;
+		}
+	}
+ 
+	if(s==num){
+		printf("Perfect Number");
+	}	
+	else{
+		printf("Not perfect number");
+	}
+	
+	return 0;
+}
+ 
+ 
+ // efficient solution
+ 
+ bool isPerfect(long long int n) 
+{ 
+    // To store sum of divisors 
+    long long int sum = 1; 
+   
+    // Find all divisors and add them 
+    for (long long int i=2; i*i<=n; i++) // iterate only half of range  
+    { 
+        if (n%i==0) 
+        { 
+            if(i*i!=n) 
+                sum = sum + i + n/i; 
+            else
+                sum=sum+i; 
+        } 
+    }  
