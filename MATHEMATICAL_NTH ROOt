@@ -1,0 +1,32 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    int t = sc.nextInt();
+	    while(t-->0){
+	        int n = sc.nextInt();
+	        int m = sc.nextInt();
+	        
+	        int res = (int) Math.round(Math.pow(m,1.0/n));
+	        if(Math.pow(res,n)==m)
+	        System.out.println(res);
+	        else
+	        System.out.println(-1);
+	    }
+	}
+}
+
+// refer on stackoverflow 
+
+N=4 M=81
+
+X^4 = 81;
+
+x=81^1/4
+
+x=3;
+
+and check 3^4 = 81 is valid or not ,,,
