@@ -1,0 +1,40 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int min(int a, int b) 
+{ 
+    return (a < b) ? a : b; 
+} 
+long int binomialCoeff(int n, int k)  
+{  
+    
+    long int C[k+1]; 
+    memset(C, 0, sizeof(C)); 
+  
+    C[0] = 1;  // nC0 is 1 
+  
+    for (int i = 1; i <= n; i++) 
+    { 
+        // Compute next row of pascal triangle using 
+        // the previous row 
+        for (int j = min(i, k); j > 0; j--) 
+            C[j] = C[j]%1000000007+ C[j-1]%1000000007; 
+    } 
+    return C[k]%1000000007; 
+}  
+int main() {
+	//code
+	int t,n,r;
+    long int res=0;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n>>r;
+	    res=binomialCoeff(n,r);
+	    cout<<res<<endl;
+	}
+	return 0;
+}
+
+
+refer video 
