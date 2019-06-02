@@ -1,0 +1,50 @@
+
+
+//////////////////////////////////////////////////////////////////////////
+// Returns true if two rectangles (l1, r1) and (l2, r2) overlap 
+bool doOverlap(Point l1, Point r1, Point l2, Point r2) 
+{ 
+    // If one rectangle is on left side of other 
+    if (l1.x > r2.x || l2.x > r1.x) 
+        return false; 
+  
+    // If one rectangle is above other 
+    if (l1.y < r2.y || l2.y < r1.y) 
+        return false; 
+  
+    return true; 
+} 
+  
+
+
+
+SEE VIDEO ON GEEKSFORGEEKS FOR clear explanation
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+using namespace std;
+
+int main() {
+	//code
+	int t,flag=0;
+	long int l1x,l1y,r1x,r1y,l2x,l2y,r2x,r2y;
+	cin>>t;
+	while(t--)
+	{
+	    flag=1;
+        cin>>l1x>>l1y>>r1x>>r1y;
+        cin>>l2x>>l2y>>r2x>>r2y;
+        if(l2x > r1x || l1x > r2x)
+            flag=0;
+        if(r1y > l2y || r2y > l1y)
+            flag=0;
+        if(flag==1)
+           cout<<"1"<<endl;
+        else
+           cout<<"0"<<endl;
+	}
+	return 0;
+}
