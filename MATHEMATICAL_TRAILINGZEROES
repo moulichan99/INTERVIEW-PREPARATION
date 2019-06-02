@@ -1,0 +1,42 @@
+A simple method is to first calculate factorial of n, then count trailing 0s in the result 
+(We can count trailing 0s by repeatedly dividing the factorial by 10 till the remainder is 0).
+
+The above method can cause overflow for a slightly bigger numbers as factorial of a number is a big number
+(See factorial of 20 given in above examples). 
+
+The idea is to consider prime factors of a factorial n. A trailing zero is always produced by prime factors 2 and 5. 
+If we can count the number of 5s and 2s, our task is done. Consider the following examples.
+
+n = 5: There is one 5 and 3 2s in prime factors of 5! (2 * 2 * 2 * 3 * 5). So count of trailing 0s is 1.
+
+n = 11: There are two 5s and three 2s in prime factors of 11! (2 8 * 34 * 52 * 7). So count of trailing 0s is 2.
+
+We can easily observe that the number of 2s in prime factors is always more than or equal to the number of 5s. 
+So if we count 5s in prime factors, we are done. How to count total number of 5s in prime factors of n!?
+
+
+EFFICIENT SOLUTION
+Trailing 0s in n! = Count of 5s in prime factors of n!
+                  = floor(n/5) + floor(n/25) + floor(n/125) + ....
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t,n,i=0,count=0;
+    cin>>t;
+    while(t--)
+    {
+        count=0;
+        cin>>n;
+        for(i=5; n/i >=1;i*=5)
+        {
+            count+=n/i;
+        }
+        cout<<count<<endl;
+    }
+    return 0;
+}
