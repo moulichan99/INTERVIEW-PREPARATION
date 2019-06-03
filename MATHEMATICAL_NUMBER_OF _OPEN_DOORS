@@ -1,0 +1,120 @@
+SIMPLE SOLUTION:
+
+Approach: It is mathematical and logical approach. If we observe it properly,
+then we find that the final status of a door numbered i is open if ‘i’ has odd number of factors 
+and status is closed if ‘i’ has even number of factors. 
+It does not depend in which sequence the status of doors are changed.
+To find whether count of divisors of number is even or odd
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+We can observe that the number of divisors is odd only in case of perfect squares.
+Hence the best solution would be to check if the given number is perfect square or not. 
+If it’s a perfect square, then the number of divisors would be odd, else it’d be even.
+
+
+
+// PROGRAM TO FIND COUNT OF DIVISORS 
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+// Function to find if count 
+// of divisors is even or 
+// odd 
+void countDivisors(int n) 
+{ 
+    int root_n = sqrt(n); 
+  
+    // If n is a perfect square, 
+    // then it has odd divisors 
+    if (root_n * root_n == n) 
+        printf("Odd\n"); 
+    else
+        printf("Even\n"); 
+} 
+  
+// Driver Code 
+int main() 
+{ 
+    cout << "The count of divisors"
+         << " of 10 is: "; 
+  
+    countDivisors(10); 
+    return 0; 
+} 
+
+Output :
+The count of divisor: Even
+
+
+ORGINAL PROGRAM:
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+bool hasevenfactors(int a)
+{
+    int root = floor(sqrt(a));
+    if(root*root==a)
+        return true;
+    else
+        return false;
+}
+
+int main() {
+    //code
+    int t;
+    long int n,i,j,count;
+    cin>>t;
+    while(t--)
+    {
+        count=1;
+        cin>>n;
+        for(i=2;i<=n;i++)
+        {
+           if(hasevenfactors(i))
+           {
+               count++;
+           }
+        }
+        cout<<count<<endl;
+    }
+	return 0;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+EFFICIENT SOLUTION: number of square numbers within given digit :')
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    //code
+    int t;
+    long int n,i,j,count;
+    cin>>t;
+    while(t--)
+    {
+        count=0;
+        cin>>n;
+        for(i=1;i*i<=n;i++)
+            count++;
+        cout<<count<<endl;
+    }
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
