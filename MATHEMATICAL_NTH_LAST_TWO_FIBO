@@ -1,0 +1,30 @@
+
+A better solution is to use the fact that after 300-th Fibonacci number last two digits starts repeating.
+1) Find m = n % 300.
+2) Return m-th Fibonacci number.
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int t;
+	long int n,i;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n;
+	    long int f[300];
+	    f[0]=0,f[1]=1;
+	    for(i=2;i<300;i++)
+	    {
+	        f[i]=(f[i-1]+f[i-2])%100;
+	    }
+	   cout<<f[n%300]<<endl;
+	}
+	return 0;
+}
