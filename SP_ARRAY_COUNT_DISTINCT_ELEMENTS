@@ -8,17 +8,13 @@ void countDistinct(int A[], int k, int n)
         count=0;
         memset(a,0,sizeof(a));
         for(j=i;j<i+k;j++)
-            a[A[j]]++;
-        /*for(s=0;s<=100;s++)
-        {
-          if(a[s]>=1)
-            cout<<s<<" "<<a[s]<<"\n";
-        }*/
+            a[A[j]]++;              // hasing index -> key , a[i] --> value
+             
         for(s=0;s<=100;s++)
         {
             if(a[s]>1)
             {
-                count+=a[s]-1;    
+                count+=a[s]-1;     // more than 2 elements occuring , - 1; n repeating elements means 1 element is distinct 
             }
         }
         cout<<k-count<<" ";
