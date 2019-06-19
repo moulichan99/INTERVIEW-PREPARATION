@@ -1,0 +1,26 @@
+void countDistinct(int A[], int k, int n)
+{
+    int i,j,s;
+    int a[101],count=0;
+    //Your code here
+    for(i=0;i<n-k+1;i++)
+    {
+        count=0;
+        memset(a,0,sizeof(a));
+        for(j=i;j<i+k;j++)
+            a[A[j]]++;
+        /*for(s=0;s<=100;s++)
+        {
+          if(a[s]>=1)
+            cout<<s<<" "<<a[s]<<"\n";
+        }*/
+        for(s=0;s<=100;s++)
+        {
+            if(a[s]>1)
+            {
+                count+=a[s]-1;    
+            }
+        }
+        cout<<k-count<<" ";
+    }
+}
