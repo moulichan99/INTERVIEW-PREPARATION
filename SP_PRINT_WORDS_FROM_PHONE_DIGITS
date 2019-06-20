@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+string str[9]={"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+int N;
+void words(string w,int dig[], int i)
+{
+    if(i==N)
+    {
+        cout<<w<<" ";
+        return;
+    }
+    
+    for(int j=0;j<str[dig[i]-2].size();j++) // 0 ,index start with 2 is coresponding position in 0th index so....
+    {
+        w+=str[dig[i]-2][j];
+        words(w,dig,i+1);
+        w.pop_back();
+    }
+}
+int main()
+{
+ //   ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(0);
+	int i,j,T;
+	cin>>T;
+	
+	while(T--)
+	{
+	    cin>>N;
+	    int d[N];
+	    
+	    for(i=0;i<N;i++)
+	        cin>>d[i];
+	    words("",d,0);
+	    
+	    cout<<"\n";
+	}
+	
+	return 0;
+}
+
+
+logical explanation:
+
+a
+ad
+adg ---output printed ---> pop_back the last element
+ad
+for loop--------------
+ad
+adh--------> pop_back 
+ad
+adi---->pop_back it
+ad
+after completing for loop 
+d is poped --> a
+
+------------------------------------------------------------------
+then
+d iterate through e
+aeg,aeh,aei
