@@ -1,0 +1,56 @@
+The complete solution is
+
+Maintain start and last index to store and print these values 
+Iterate the complete array.
+
+1.Add array elements to cuursum
+
+2. If currsum becomes greater than S, then remove elements starting from start index, 
+till  it become less than or equal to S, and increement start.
+
+3. if currsum becomes equals to S, then print the starting and last index
+if the currsum never maches to S, then print -1
+
+
+////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int i,j,t,n,s,sum,flag;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n>>s;
+	    int arr[n];
+	    for(i=0;i<n;i++)
+	        cin>>arr[i];
+	        
+	    for(i=0;i<n;i++)
+	    {
+	        flag=0;
+	        sum=arr[i];
+	        for(j=i+1;j<=n;j++)
+	        {
+	           if(sum==s)
+	           {
+	                cout<<i+1<<" "<<j;
+	                flag=1;
+	                break;
+	           }     
+	           if((sum+arr[j]) > s)
+	                break;
+	           sum = sum + arr[j];
+	           //cout<<sum<<" ";
+	        }
+	        if(flag==1)
+	           break;
+	        if(i==n-1)
+	          cout<<"-1";
+	    }
+	   cout<<endl;
+	}
+	return 0;
+}
