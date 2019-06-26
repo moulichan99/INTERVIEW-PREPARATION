@@ -1,0 +1,54 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while(t--){
+	    long long n, key;
+	    cin >> n >> key;
+	    long long a[n];
+	    for(long long i=0;i<n;i++)
+	        cin >> a[i];
+	    long long c=0;
+	    for(long long i=0;i<n;i++){
+	        long long flag=0, r1, r2, temp;
+	        if(a[i]<key){
+	            temp=a[i];
+	            if((int)(log10(temp)+1)==1)
+	                flag=1;
+	            r1=temp%10;
+	            temp=temp/10;
+	            while(temp>0){
+	                r2=temp%10;
+	                if(abs(r1-r2)!=1){
+	                    flag=1;
+	                    break;
+	                }
+	                r1=r2;
+	                temp=temp/10;
+	            }
+	            if(!flag){
+	                cout << a[i] << " ";
+	                c++;
+	            }
+	        }
+	    }
+	    if(c==0)
+	        cout << "-1";
+	    cout  << endl;
+	}
+	return 0;
+}
+
+
+///// 
+456
+r1 = 456%10 = 6
+temp = 456/10 = 45 ---> 45%10 --> r2= 5
+abs(5-6)==1 true then continue;
+make r1=r2(5)
+temp = 45/10 = 4 ---> 4%10 ==> r2 = 4
+abs(5-4)==1 true then continue;
+temp = 4/10 = 0 --> flag -0 so it is number
