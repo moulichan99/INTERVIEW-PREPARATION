@@ -1,0 +1,86 @@
+Given n Magnets which are placed linearly, with each magnet to be considered as of point object. 
+Each magnet suffers force from its left sided magnets such that they repel it to the right and vice versa. 
+All forces are repulsive. The force being equal to the distance (1/d , d being the distance).
+Now given the positions of the magnets, the task to find all the points along the linear line where net force is ZERO. 
+
+Example:
+
+Input:
+2
+2
+1 2
+4
+0 10 20 30
+
+Output:
+1.50
+3.82 15.00 26.18
+
+/////////////////////////////////////////////////////////////////////////
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int n;
+double a[101];
+
+double fx(double x)
+{
+    double ans = 0;
+    
+    for(int i=0;i<n;i++)
+    {
+        ans += 1/(x-a[i]);
+    }
+    return ans;
+}
+
+double bin(double l, double r, double n)
+{
+    double mid;
+    while(r>l)
+    {
+        mid = r + (l-r)*0.50;
+        
+        double val = fx(mid);
+        
+        if(abs(val) < 0.0000000000001)
+        return mid;
+        
+        if(val > 0)
+        l = mid;  // greater than 0 
+        else r = mid; // lesser than 0 (negative)
+        
+        //cout<<l<<" "<<r<<endl;
+    }
+    
+    //cout<<l<<" "<<r<<endl;
+    return l;
+}
+
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	
+	while(t--)
+	{
+	    //int n;
+	    cin>>n;
+	    
+	    //float a[101]={0};
+	    
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	    }
+	    
+	    for(int i=1;i<n;i++)
+	    {
+	        printf("%0.2f ", bin(a[i-1], a[i], a[i]));
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
