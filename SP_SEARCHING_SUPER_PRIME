@@ -1,0 +1,41 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+#define MAX 10000007
+int prime[MAX];
+vector<int>v;
+void solve()
+{
+    memset(prime,0,MAX);
+    prime[0]=1;
+    prime[1]=1;
+    for(int i=2;i*i<=MAX;i++)
+    {
+        if(prime[i]==0)
+        {
+        for(int j=i*2;j<=MAX;j+=i)
+        {
+            prime[j]=1;   
+        }
+        }
+    }
+    for(int k=2;k<=MAX;k++)
+    {
+        if(prime[k]==0 && prime[k-2]==0)  // index at diff 2 indexes are super prime numbers
+            v.push_back(k);  // it find for all 100000007 elemnts 
+    }
+}
+int main()
+{
+    int t;
+    cin>>t;
+    solve();
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int c = upper_bound(v.begin(),v.end(),n)-v.begin(); // no of elements (closely bounded to nth element )
+        cout<<c<<endl;
+    }
+    return 0;
+}
