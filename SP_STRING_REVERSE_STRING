@@ -1,0 +1,57 @@
+
+// 1 method:
+Example:
+Input:
+1
+4
+abba
+Output:
+Yes
+
+//////////////////////////////////////////////////////////////
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int t,n;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n;
+	    string str1,str2;
+	    cin>>str1;
+	    str2=str1;
+	    reverse(str1.begin(),str1.end());
+	    if(str1==str2)
+	        cout<<"Yes"<<endl;
+	    else
+	        cout<<"No"<<endl;
+	}
+	return 0;
+}
+
+//2.method:
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+// Function to reverse a string 
+void reverseStr(string& str) 
+{ 
+    int n = str.length(); 
+  
+    // Swap character starting from two 
+    // corners 
+    for (int i = 0; i < n / 2; i++) 
+        swap(str[i], str[n - i - 1]); 
+} 
+  
+// Driver program 
+int main() 
+{ 
+    string str = "geeksforgeeks"; 
+    reverseStr(str); 
+    cout << str; 
+    return 0; 
+} 
