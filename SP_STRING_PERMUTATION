@@ -1,0 +1,74 @@
+
+// concept based solution 
+------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+void permuteHelper(string s,string chosen)
+{
+    cout<<s<<" "<<chosen;
+	    if(s.empty())
+	        cout<<chosen<<" ";
+	    else
+	    {
+	        for(int i=0;i<s.length();i++)
+	        {
+	            //choose
+	            char c = s[i];
+	            chosen += c;
+	            s.erase(i,1);
+	            
+	            //explore
+	            permuteHelper(s,chosen);
+	            
+	            //unchoose
+	            s.insert(i,1,c);
+	            chosen.erase(chosen.length()-1,1);
+	        }
+	    }
+}
+void permute(string str)
+{
+       
+	    permuteHelper(str,"");
+}
+int main() {
+	//code
+	int t;
+	cin>>t;
+	
+	while(t--)
+	{
+	    string str;
+	    cin>>str;
+	    permute(str);
+	    cout<<endl;
+	}
+	return 0;
+}
+
+
+---------------------------------------------------------------------------
+geeksforgeeks answer (but same slighty different)
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    string s;
+	    cin>>s;
+	    sort(s.begin(),s.end());
+	    cout<<s<<" ";
+	    while(next_permutation(s.begin(),s.end()))
+	    {
+	        cout<<s<<" ";
+	    }
+	    cout<<"\n";
+	}
+	return 0;
+}
