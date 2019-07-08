@@ -1,0 +1,54 @@
+logic :
+  1. Reverse the individual letters;
+  2. and the reverse the over all string .
+  
+first reverse the individual words, we get the below string.
+     "i ekil siht margorp yrev hcum"
+next reverse the whole string from start to end and you get the desired output.
+     "much very program this like i"
+
+////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+	//code
+	int i,t;
+	cin>>t;
+	while(t--)
+	{
+	    int prev=0,sum=0;
+	    string s,s1,temp;
+	    cin>>s;
+	    s1="";
+	    for(i=0;i<s.length();i++)
+	    {
+	        if(s[i]=='.')
+	        {
+	            
+	            temp = s.substr(prev,i-prev);
+	            reverse(temp.begin(), temp.end()); 
+	            temp+='.';
+	            //cout<<temp;
+                s1 += temp;
+                prev = i+1;
+                
+	        }
+	        if(i==s.length()-1)
+	        {
+                temp = s.substr(prev,i+1-prev);
+	            reverse(temp.begin(), temp.end()); 
+	            s1 += temp;
+	            //cout<<temp;
+            }
+	        
+	        
+        }
+        
+	    reverse(s1.begin(), s1.end());
+        cout<<s1<<endl;    
+	}
+	return 0;
+}
