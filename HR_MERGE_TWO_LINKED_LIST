@@ -1,0 +1,48 @@
+SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+typedef SinglyLinkedListNode* NODEPTR;
+NODEPTR tptr1,tptr2,tptr3=NULL,newHead=NULL,newNode;
+tptr1=head1,tptr2=head2;
+
+while(tptr1!=NULL||tptr2!=NULL)
+{
+    newNode = (SinglyLinkedListNode*)malloc(sizeof(SinglyLinkedListNode));
+    newNode->data =0;
+    newNode->next =NULL;
+
+    if(tptr1==NULL&&tptr2!=NULL)
+    {
+    newNode->data = tptr2->data;
+    tptr2 = tptr2->next;
+    }
+    else if(tptr2==NULL&&tptr1!=NULL)
+    {
+    newNode->data = tptr1->data;
+    tptr1 = tptr1->next;
+    }
+    else
+    {
+        if(tptr1->data<tptr2->data)
+        {
+        newNode->data = tptr1->data;
+        tptr1 = tptr1->next;
+        }
+        else
+        {
+        newNode->data = tptr2->data;
+        tptr2 = tptr2->next;
+        }
+
+    }
+    if(tptr3==NULL)
+        tptr3 =newNode;
+    else
+    {
+        tptr3->next = newNode;
+        tptr3=tptr3->next;
+    }
+    if(newHead==NULL)
+        newHead = newNode;
+}
+
+return newHead;
+}
