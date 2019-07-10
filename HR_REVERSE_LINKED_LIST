@@ -1,0 +1,16 @@
+SinglyLinkedListNode* reverse(SinglyLinkedListNode* head) {
+
+typedef SinglyLinkedListNode* NODEPTR;
+NODEPTR tptr,NEXT,current,prev;
+current = head;
+prev =NULL; 
+while(current!=NULL)
+{
+    NEXT = current -> next;
+    current->next=prev;
+    prev = current;
+    current = NEXT;
+}
+head = prev;
+return head;
+}
