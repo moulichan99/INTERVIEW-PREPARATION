@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+#include <bits/stdc++.h> 
+
+int main() {
+    
+    int t;
+    cin>>t;
+    
+    while(t--)
+    {
+        int n,x;
+        cin>>n;
+        cin>>x;
+        
+        vector<int>v1(n,0);
+        
+        for(int i=0;i<n;i++)
+        {
+            cin>>v1[i];
+        }
+        
+        deque<int>window;
+        
+        int minCount=INT_MAX;
+        int currSum=0,count=0,i=0;
+        
+        
+        while(i<n)
+        {
+        
+         if(currSum<=x)
+            {
+                window.push_back(v1[i]);
+                currSum+=v1[i];
+                count++;
+                
+                if(currSum<=x)
+                {
+                    i++;
+                }
+            }
+            else
+            {
+                //curr Sum is greater than or equal to x
+                
+                if(count<minCount)
+                minCount=count;
+                
+                int temp=window.front();
+                window.pop_front();
+                count--;
+                currSum=currSum-temp;
+                
+                if(currSum<=x)
+                {
+                    i++;
+                }
+                
+                
+            }
+        }
+        
+        cout<<minCount<<"\n";
+        
+    }
