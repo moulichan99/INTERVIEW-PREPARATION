@@ -1,0 +1,45 @@
+using namespace std;
+const long long mod = 1000*1000*1000+7;
+long long c[101][101][101];
+long long dp[101][101][101];
+void precal()
+{
+    for(int i=0;i<101;i++)
+    {
+        for(int j=0;j<101;j++)
+        {
+            for(int k=0;k<101;k++)
+            {
+                if(i>0)
+                {
+                    dp[i][j][k] = (10*dp[i-1][j][k]+dp[i][j][k]+4*(c[i-1][j][k]+1))%mod;
+                    c[i][j][k] = (c[i][j][k]+c[i-1][j][k]+1)%mod;
+                }
+                if(j>0)
+                {
+                    dp[i][j][k] = (10*dp[i][j-1][k]+dp[i][j][k]+5*(c[i][j-1][k]+1))%mod;
+                    c[i][j][k] = (c[i][j][k]+c[i][j-1][k]+1)%mod;
+                }
+                if(k>0)
+                {
+                    dp[i][j][k] = (10*dp[i][j][k-1]+dp[i][j][k]+6*(c[i][j][k-1]+1))%mod;
+                    c[i][j][k] = (c[i][j][k]+c[i][j][k-1]+1)%mod;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	precal();
+	while(t--)
+	{
+	    int x, y, z;
+	    cin>>x>>y>>z;
+	    cout<<dp[x][y][z]<<endl;
+	}
+	return 0;
+}
